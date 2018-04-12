@@ -1,6 +1,6 @@
 ( function() {
     var __                  = wp.i18n.__;
-    var createElement       = wp.element.createElement;
+    var el                  = wp.element.createElement;
     var registerBlockType   = wp.blocks.registerBlockType;
     var RichText            = wp.blocks.RichText;
 	
@@ -10,37 +10,82 @@
         category: 'common',
         
         attributes: {
+            title: {
+		type: 'array',
+		source: 'children',
+		selector: 'h3',
+	    },
             content: {
                 type: 'array',
                 source: 'children',
                 selector: 'p',
-                ///default: 'Editable block content ...',
             }
         },
 
         edit: function( props ) {
-            var content = props.attributes.content;
-            var focus = props.focus;
+	    var attributes = props.attributes;
+            var focusedEditable = props.focus ? props.focus.editable || 'title' : null;
             
-            return createElement(
-                RichText, {
-                    tagName: 'p',
-                    className: props.className,
-                    value: content,
-                    onChange: function(input) {
-                        props.setAttributes({ content: input });
-                    },
-                    focus: focus,
-                    onFocs: props.setFocus
-                }
+            return (
+                el( 'div', { className: 'teaser'},
+                    el( 'div', { className: 'container'},
+                        el( 'div', { className: 'title'},
+                            el( 'div', { className: 'bar left'} ),
+                            el(
+                                RichText, {
+                                    tagName: 'h3',
+                                    inline: true,
+                                    placeholder: __( 'Write title ...' ),
+                                    value: attributes.title,
+                                    onChange: function(input) {
+                                        props.setAttributes({ title: input });
+                                    },
+                                    focus: focusedEditable === 'title' ? focus : null,
+                                    onFocus: function( focus ) {
+					props.setFocus( _.extend( {}, focus, { editable: 'title' } ) );
+				    },
+                                }
+                            ),
+                            el( 'div', { className: 'bar right'} )
+                        ),
+                        el( 'div', { className: 'content'},
+                            el( 
+                                RichText, {
+                                    tagName: 'p',
+                                    inline: true,
+                                    placeholder: __( 'Write content ...' ),
+                                    value: attributes.content,
+                                    onChange: function(input) {
+                                        props.setAttributes({ content: input });
+                                    },
+                                    focus: focusedEditable === 'content' ? focus : null,
+                                    onFocus: function( focus ) {
+					props.setFocus( _.extend( {}, focus, { editable: 'title' } ) );
+				    },
+                                }   
+                            )
+                        )
+                    )
+                )
             );
         },
         
         save: function( props ) {
-            var content = props.attributes.content;
+            var attributes = props.attributes;
             
-            return createElement(
-                'p', { className: props.className }, content
+            return (
+                el( 'div', { className: 'teaser'},
+                    el( 'div', { className: 'container'},
+                        el( 'div', { className: 'title'},
+                            el( 'div', { className: 'bar left'} ),
+                            el( 'h3', {}, attributes.title ),
+                            el( 'div', { className: 'bar right'} )
+                        ),
+                        el( 'div', { className: 'content'},
+                            el( 'p', {}, attributes.content )
+                        )
+                    )
+                ) 
             );
         },
     });
