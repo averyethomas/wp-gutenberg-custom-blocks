@@ -1,56 +1,61 @@
-.wp-block-gfblocks-feature-block {
-	position: relative;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: row;
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-webkit-flex-wrap: wrap;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-}
-.gfblocks-block {
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
-    width: 100%;
-	padding: 1rem;
-}
-.wp-block-gfblocks-feature-block.gfblocks-cols-2 .gfblocks-block {
-	-webkit-flex: 0 1 50%;
-	-ms-flex: 0 1 50%;
-	flex: 0 1 50%;
-}
-.wp-block-gfblocks-feature-block .gfblocks-feature-image {
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-justify-content: center;
-	justify-content: center;
-}
-.gfblocks-feature-image img {
-	width: auto;
-	max-height: 150px;
-}
-.wp-block-gfblocks-feature-block.gfblocks-cols-1 .gfblocks-block-2 {
-    display: none;
-	visibility: hidden;
-}
-.wp-block-gfblocks-feature-block .gfblocks-feature-content {
-	padding: 0 1rem;
-	box-sizing: border-box;
-}
-.wp-block-gfblocks-feature-block .gfblocks-feature-image button {
-	margin: 0 auto;
-}
-.wp-block-gfblocks-feature-block .gfblocks-feature-image button.image-button {
-	line-height: 0;
-	padding: 0px;
-}
-.wp-block-gfblocks-feature-block .gfblocks-feature-image button.image-button img {
-	margin: 0;
-}
+body .teaser {
+  margin: 10px auto;
+  padding: 5rem 0;
+  background-size: cover;
+  overflow: hidden; }
+  body .teaser.center .container .bordered {
+    margin: 0 auto; }
+    body .teaser.center .container .bordered .content {
+      text-align: center; }
+  body .teaser.left .container .bordered {
+    float: left; }
+    body .teaser.left .container .bordered .title .bar.left {
+      max-width: 40px; }
+    body .teaser.left .container .bordered .content {
+      text-align: left; }
+  body .teaser.right .container .bordered {
+    float: right; }
+    body .teaser.right .container .bordered .title .bar.right {
+      max-width: 40px; }
+    body .teaser.right .container .bordered .content {
+      text-align: right; }
+  body .teaser.dark .container .bordered {
+    border-left: 2px solid #000000;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000; }
+    body .teaser.dark .container .bordered .title .bar {
+      background-color: #000000; }
+    body .teaser.dark .container .bordered .title h3 {
+      color: #000000; }
+    body .teaser.dark .container .bordered .content p {
+      color: #000000; }
+  body .teaser.light .container .bordered {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white; }
+    body .teaser.light .container .bordered .title .bar {
+      background-color: white; }
+    body .teaser.light .container .bordered .title h3 {
+      color: white; }
+    body .teaser.light .container .bordered .content p {
+      color: white; }
+  body .teaser .container .bordered {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    max-width: 500px; }
+    body .teaser .container .bordered .title {
+      display: flex; }
+      body .teaser .container .bordered .title .bar {
+        height: 2px;
+        background-color: black;
+        display: block;
+        width: 100%; }
+      body .teaser .container .bordered .title h3 {
+        line-height: 4rem;
+        position: relative;
+        top: -20px;
+        margin: 0 1rem;
+        text-wrap: no-wrap; }
+    body .teaser .container .bordered .content {
+      padding: 0 40px 25px; }
